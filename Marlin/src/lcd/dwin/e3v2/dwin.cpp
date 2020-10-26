@@ -1938,6 +1938,7 @@ void HMI_MainMenu() {
     switch (select_page.now) {
       case 0: // Print File
         checkkey = SelectFile;
+        gcode.process_subcommands_now_P(PSTR("M21" ));
         Draw_Print_File_Menu();
         break;
 
@@ -3143,7 +3144,8 @@ void HMI_Info() {
   if (encoder_diffState == ENCODER_DIFF_ENTER) {
     #if HAS_ONESTEP_LEVELING
       checkkey = Control;
-      select_control.set(CONTROL_CASE_INFO);
+      select_control.reset();
+      index_control = MROWS;
       Draw_Control_Menu();
     #else
       select_page.set(3);
