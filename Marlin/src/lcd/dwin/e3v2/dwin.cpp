@@ -2145,7 +2145,7 @@ void HMI_Printing() {
             #endif
           #endif
 
-          strcat_P(cmd, PSTR("M24"));
+          strcat_P(cmd, M24_STR);
           queue.inject(cmd);
         }
         else {
